@@ -1,5 +1,4 @@
 <?php
-namespace Duitku\Indodana\Helper\Duitku;
 
 class Duitku_Indodana_ApiRequestor {
 

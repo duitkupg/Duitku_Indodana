@@ -14,9 +14,9 @@
  */
 
 namespace Duitku\Indodana\Helper;
-// include_once('Duitku/DuitkuCore.php');
+include_once('Duitku/DuitkuCore.php');
 use Duitku\Indodana\Helper\DuitkuConstants;
-use Duitku\Indodana\Helper\Duitku\Duitku_Indodana_Core;
+use Duitku_Indodana_Core;
 class Data extends \Magento\Framework\App\Helper\AbstractHelper
 {
     /**
