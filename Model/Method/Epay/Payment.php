@@ -159,7 +159,7 @@ class Payment extends \Duitku\Indodana\Model\Method\AbstractPayment
 		  'address' => $order->getBillingAddress()->getStreet()[0],
 		  'city' => $order->getBillingAddress()->getCity(),
 		  'postalCode' => $order->getBillingAddress()->getPostcode(),
-		  'phone' => $order->getBillingAddress()->getTelephone(),
+		  'phone' => $this->removeSpecialCharacters($order->getBillingAddress()->getTelephone()),
 		  'countryCode' => $order->getBillingAddress()->getCountryId(),
 		);
 		
@@ -167,7 +167,7 @@ class Payment extends \Duitku\Indodana\Model\Method\AbstractPayment
 			'firstName' => $order->getCustomerFirstname(),
 			'lastName' => $order->getCustomerLastname(),
 			'email' => $email,
-			'phoneNumber' => $order->getBillingAddress()->getTelephone(),
+			'phoneNumber' => $this->removeSpecialCharacters($order->getBillingAddress()->getTelephone()),
 			'billingAddress' => $billing_address,
 			'shippingAddress' => $billing_address
 		);
@@ -184,7 +184,7 @@ class Payment extends \Duitku\Indodana\Model\Method\AbstractPayment
              'merchantUserInfo' => $merchantUserInfo,
 			 'customerVaName' => $merchantUserInfo,
 			 'email' => $email,
-			 'phoneNumber' => $order->getBillingAddress()->getTelephone(),		 
+			 'phoneNumber' => $this->removeSpecialCharacters($order->getBillingAddress()->getTelephone()),		 
              'callbackUrl' => $callbackUrl,
 			 'expiryPeriod' => 1440,
              'returnUrl' => $returnUrl,
@@ -221,7 +221,7 @@ class Payment extends \Duitku\Indodana\Model\Method\AbstractPayment
      */
     public function removeSpecialCharacters($value)
     {
-        return preg_replace('/[^\p{Latin}\d ]/u', '', $value);
+        return preg_replace('/[^\p{Latin}\d]/u', '', $value);
     }
 
    
